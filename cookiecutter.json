@@ -1,0 +1,12 @@
+{
+  "package_name": "saao-package",
+  "package_slug": "saaopackage",
+  "author": "South African Astronomical Observatory",
+  "author_email": "enquiries@saao.ac.za",
+  "copyright_year": "2022",
+  "version": "0.0.1",
+  "short_description": "A Python package for doing something.",
+  "url": "https://some.repo.url",
+  "supported_python_versions": "\"py37\", \"py38\", \"py39\", \"py310\"",
+  "lowest_supported_python_version": "\"py37\""
+}
