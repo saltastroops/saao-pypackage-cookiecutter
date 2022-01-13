@@ -1,3 +1,3 @@
 # {{ cookiecutter.package_name }}
 
-A Python package.
+{{ cookiecutter.short_description }}
