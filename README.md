@@ -68,6 +68,7 @@ format | `black` | Check for formatting issues | `--check --diff src test`
 lint | `flake8` | Check for linting issues | `src test`
 imports | `isort` | Check for incorrectly sorted import statements | `--check --diff src test`
 typecheck | `mypy` | Check for type errors | `src test`
+docs | `sphinx-build` | Check building the documentation | `-W -b html -d {envtmpdir}/doctrees docs {envtmpdir}/html`
 
 If called without arguments, tox will run the testenv environment for all the python versions. To run it for a particular version, you can specify that version with the `-e` option. For example:
 
@@ -98,6 +99,64 @@ tox -p -e p38,typecheck
 ```
 
 This reduces the amount of execution time, but also the amount of output you get from tox.
+
+## Documentation
+
+The template creates a `docs` folder for the package documentation. This contains a [sphinx](https://www.sphinx-doc.org/en/master/) configuration file (`conf.py`) and an index file (`index.md`).
+
+In order to add pages to the documentation, you need to add their Markdown or reStructured Text file to the treetoc directive in `index.md`. For example, if you have an additional API page in a file `api.md`, the treetoc directive might look as follows. Note that the index page with the toctree directive must not be included in the toctree directive.
+
+    ```{toctree}
+    ---
+    hidden: true
+    maxdepth: 2
+    caption: Content
+    ---
+
+    api
+    ```
+
+The `hidden` property ensures that the content tree is not displayed on the index page. You still need the directive, though, so that sphinx knows how to populate the content tree in the sidebar.
+
+Bu default, the [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/latest/) is used for the documentation. If you swap this for another theme, you should remove the theme package dependency (`sphinx-book-theme`) from the Sphinx configuration file (`docs/conf.py`), from the docs tox environment in `setup.cfg` and from the dev requirements file (`requirements-dev.txt`). You also have to remove or replace the `sidebar_html` configuration in the Sphinx configuration file, as required by the new theme.
+
+## Development
+
+For testing outside tox and for building the documentation you need various Python packages, which can be installed from the `requirements-dev.txt` file:
+
+```shell
+py -m pip install -r requirements-dev.txt
+```
+
+For unit tests run:
+
+```shell
+pytest
+```
+
+For formatting the code run:
+
+```shell
+black src test
+```
+
+For sorting import statements run:
+
+```shell
+isort src test
+```
+
+For linting run:
+
+```shell
+flake8 src test
+```
+
+For building the documentation run:
+
+```shell
+sphinx-build docs _build
+```
 
 ## Acknowledgments
 
