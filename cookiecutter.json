@@ -1,4 +1,7 @@
 {
+  "_copy_without_render": [
+    ".github"
+  ],
   "package_name": "saao-package",
   "package_slug": "saaopackage",
   "author": "South African Astronomical Observatory",
