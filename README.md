@@ -170,8 +170,8 @@ Similarlarly, if you have a class `Toolkit` in the `toolkit` module, you can ref
 
 The `py` domain [has the following roles](https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html).
 
----|---
 Role | Description
+--- | ---
 :py:mode: | Module or package.
 :py:func: | Function. Parentheses will be added automatically by Sphinx if the `add_function_parentheses` config value is True (the default).
 :py:data: | Module-level variable.
