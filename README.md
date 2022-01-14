@@ -118,7 +118,113 @@ In order to add pages to the documentation, you need to add their Markdown or re
 
 The `hidden` property ensures that the content tree is not displayed on the index page. You still need the directive, though, so that sphinx knows how to populate the content tree in the sidebar.
 
-Bu default, the [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/latest/) is used for the documentation. If you swap this for another theme, you should remove the theme package dependency (`sphinx-book-theme`) from the Sphinx configuration file (`docs/conf.py`), from the docs tox environment in `setup.cfg` and from the dev requirements file (`requirements-dev.txt`). You also have to remove or replace the `sidebar_html` configuration in the Sphinx configuration file, as required by the new theme.
+By default, the [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/latest/) is used for the documentation. If you swap this for another theme, you should remove the theme package dependency (`sphinx-book-theme`) from the Sphinx configuration file (`docs/conf.py`), from the docs tox environment in `setup.cfg` and from the dev requirements file (`requirements-dev.txt`). You also have to remove or replace the `sidebar_html` configuration in the Sphinx configuration file, as required by the new theme.
+
+### Docstrings
+
+The template is adding [numpydoc](https://numpydoc.readthedocs.io/en/latest/) as a Sphinx extension. This implies that Python docstrings should be formatted according to the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). You might also want to have a look at the [AstroPy style guide](https://docs.astropy.org/en/latest/development/style-guide.html#astropy-style-guide).
+
+All numpydoc warnings for validation during a Sphinx build are enabled by default. If you want to be less restrictive, you may change the value of the `numpydoc_validation_checks` parameter in the `conf.py` file. For example, if you don't want to enforce types for parameters (but want to keep all other checks), you could use:
+
+```shell
+numpydoc_validation_checks = {"all", "PR04"}
+```
+
+As another example, if you only care about checking that there *are* docstrings and that their sections are in the correct order, you could use:
+
+```shell
+numpydoc_validation_checks = {"GL08", "GL07"}
+```
+
+See the [numpydoc validation page](https://numpydoc.readthedocs.io/en/latest/validation.html) for more details, including a list odf all the built-in validation checks.
+
+Due to the way autodoc is handling code, you have to use reStructured Text in docstrings; MyST markdown will not work.
+
+### Referencing code
+
+Sphinx has the hierarchial concept of domains, roles and artifacts. For example, there is a `py` domain with a set of roles like `mod` or `class` (see below), which in turn contain a variety of artifacts. The combination of domain, role and artifact can be regarded as an address which can be referenced and linked to.
+
+Assume we have a Python module `toolkit`. This would correspond to an artifact `toolkit` belonging to the `py` domain and the `mod` role. In reStructured text you would reference the module as follows:
+
+```
+:py:mod:`toolkit`
+```
+
+In MyST Markdown you would instead use:
+
+```
+{py:mod}`toolkit`
+```
+
+Similarlarly, if you have a class `Toolkit` in the `toolkit` module, you can reference it as follows in reStructured Text and MyST Markdown, respectively:
+
+```
+:py:class:`toolkit.Toolkit`
+```
+
+```
+{py:class}`toolkit.Toolkit`
+```
+
+The `py` domain [has the following roles](https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html).
+
+---|---
+Role | Description
+:py:mode: | Module or package.
+:py:func: | Function. Parentheses will be added automatically by Sphinx if the `add_function_parentheses` config value is True (the default).
+:py:data: | Module-level variable.
+:py:const: | "defined" constant. This may be a Python variable that is not intended to be changed.
+:py:class: | Class.
+:py:meth: | Method of an object. The role text can include the type name and the method name; if it occurs within the description of a type, the type name can be omitted.
+:py:attr: | Data attribute or property of an object.
+:py:exc: | Exception.
+:py:obj: | Object of unspecified type. Useful e.g. as the [default_role](https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-default_role).
+
+If you are using autodoc for generating documentation for your code, you can use these roles for referencing your code out of the box.
+
+You may use roles for referencing within docstrings. However, as mentioned above, you have to use reStructured text in docstrings; MyST Markdown references will not work.
+
+### Referencing code in other projects
+
+Thanks to [intersphinx](https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html), which is enabled by this template, you can reference code in other projects in the same way as you in your own project. So for example, Python's `list` class can be referenced in reStructured text with
+
+```
+:py:class:`list`
+```
+
+and in MyST Markdown as
+
+```
+{py:class}`list`
+```
+
+However, you need to declare the other projects in the `conf.py` file. For example:
+
+```
+intersphinx_mapping = {
+    'python': ('http://docs.python.org/', None),
+    'numpy': ('https://numpy.org/doc/stable/', None),
+    'scipy': ('http://docs.scipy.org/doc/scipy/reference/', None),
+    'matplotlib': ('http://matplotlib.org/', None),
+    'astropy': ('http://docs.astropy.org/en/stable/', None)
+}
+```
+
+If the same artifact name is used by different projects, you can resolve the ambiguity by qualifying the name with the project's key from the `intersphinx_mapping` dictionary. So for example, using the configuration above, the following reference in reStructured Text makes it explicit that you are referring to the `time` module in the Python documentation:
+
+```
+:py:mod:`python:time`
+```
+
+Similarly, in MyST you would use:
+
+```
+{py:mod}`python:time`
+```
+
+References to code in your project do not require a qualifier.
+
+You may find out more about intersphinx from [Brian Skinn's PyOhio's 2019 presentation](https://youtu.be/CfInPYkbTZE).
 
 ## Development
 

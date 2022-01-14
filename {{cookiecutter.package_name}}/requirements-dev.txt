@@ -3,6 +3,7 @@ flake8
 isort
 mypy
 myst-parser
+numpydoc
 pytest
 pytest-cov
 sphinx
