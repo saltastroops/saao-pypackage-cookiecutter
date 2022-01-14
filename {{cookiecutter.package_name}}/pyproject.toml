@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.black]
-target-version = [{{ cookiecutter.supported_python_versions }}]
+target-version = ["3.7", "3.8", "3.9","3.10"]
 
 [tool.isort]
 profile = "black"
