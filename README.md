@@ -57,6 +57,8 @@ git init
 
 Check all the project files, and the `setup.cfg` file in particular, and make any required changes.
 
+Once you have added a file to the `docs/_static` folder (which is for static documentation resources), you may remove the `.gitkeep` file in that folder. Don't remove it beforehand, though, and add it back if you remove all files from the folder. Otherwise, git will not keep the empty folder, and Sphinx requires the folder to be present, even if it is empty.
+
 ## tox environments
 
 The template defines several tox environments.
@@ -263,6 +265,28 @@ For building the documentation run:
 ```shell
 sphinx-build docs _build
 ```
+
+## GitHub actions
+
+The template adds GitHub actions for Continuous Integration / Continuous Deployment.
+
+### Running tests
+
+The file `.github/workflows/run-tests.yaml` defines a GitHub action for running all the tox tests. The tests in the default environment are run for several Python version, whereas the tests for all the other environments are run for a single Python version only.
+
+The Python versions in this file should be consistent with those in the `setup.cfg` file.
+
+The GitHub action is run for pull requests and pushes to the main branch.
+
+### Publishing the documentation
+
+The file `.github/workflows/publish-documentation.yaml` defines a GitHub action for building the documentation and pushing it to the `gh-pages` branch for publication. Contrary to the tox test for building the documentation, warnings are *not* treated as an error.
+
+After this action has run successfully for the first time, you should go to your project's GitHub repository and choose the Pages tab from the Settings. On the tab choose the gh-pages and the / (root) directory as the source and save. (The gh-pages branch can only be selected after the action has run successfully for the first time.)
+
+Do *not* choose a template, as this is only relevant for documentation built with Jekyll.
+
+Your page should be published within a minute or so; you can find its URL on the settings page.
 
 ## Acknowledgments
 
