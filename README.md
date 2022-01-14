@@ -53,7 +53,7 @@ You should also consider putting the project under version control.
 git init
 ```
 
-Check all the project files, and the `setup.cfg` file in particular, and make any required changes. Make sure the Python versions used for tox are the ones your package should support, and that the Python versions in the configuration file `pyproject.toml` and in the GitHub Action file `.github/workflows/run-tests.yaml` are consistent with those in `setup.cfg`.
+Check all the project files, and the `setup.cfg` file in particular, and make any required changes. Make sure the Python versions used for tox are the ones your package should support, and that the Python versions in the configuration file `pyproject.toml` and in the GitHub Action files in `.github/workflows/` are consistent with those in `setup.cfg`.
 
 Once you have added a file to the `docs/_static` folder (which is for static documentation resources), you may remove the `.gitkeep` file in that folder. Don't remove it beforehand, though, and add it back if you remove all files from the folder. Otherwise, git will not keep the empty folder, and Sphinx requires the folder to be present, even if it is empty.
 
