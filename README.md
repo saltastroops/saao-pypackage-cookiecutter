@@ -33,11 +33,9 @@ Detail name | Description
 author | Package author.
 author_email | Email address of the package author.
 copyright_year | Year to include in the license file.
-lowest_supported_python_version | Lowest version of Python which can be used with the package. This must be given in a format understood by mypy (such as "py37" for Python 3.7). The version must be enclosed in double quotes. The value should be consistent with the value for `supported_python_versions`.
 package_name | The name of the package, as used for PyPI. This will also be used as the name of the directory created for the project.
 package_slug | The name of the package, as used in the code. A package (folder) with this name will be created in the `src` folder.
 short_description | Short (one line) description of the package.
-supported_python_versions | Comma separated list of the Python versions which can be used with the package. The versions must be given in a format understood by tox (such as "py37" for Python 3.7). Each version must be enclosed in double quotes.
 url | URL of the package's repository.
 version | Package version.
 
@@ -55,7 +53,7 @@ You should also consider putting the project under version control.
 git init
 ```
 
-Check all the project files, and the `setup.cfg` file in particular, and make any required changes.
+Check all the project files, and the `setup.cfg` file in particular, and make any required changes. Make sure the Python versions used for tox are the ones your package should support, and that the Python versions in the GitHub Action file `.github/workflows/run-tests.yaml` are consistent with those in `setup.cfg`.
 
 Once you have added a file to the `docs/_static` folder (which is for static documentation resources), you may remove the `.gitkeep` file in that folder. Don't remove it beforehand, though, and add it back if you remove all files from the folder. Otherwise, git will not keep the empty folder, and Sphinx requires the folder to be present, even if it is empty.
 
