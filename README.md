@@ -184,7 +184,13 @@ If you are using autodoc for generating documentation for your code, you can use
 
 You may use roles for referencing within docstrings. However, as mentioned above, you have to use reStructured text in docstrings; MyST Markdown references will not work.
 
-### Referencing code in other projects
+The `py:obj:` role is extremely useful as it can reference objects of any of the other roles. So for example, you may use `` :py:obj:`hello` `` instead of `` :py:func:`str` ``. Even better, as  `:py:obj:` is set as the default role by this template, you may just use `` `hello` `` instead of `` :py:pbj:`str` ``. Unfortunately, while `{py:obj}` in MyST Markdown works the same way as `:py:obj:` in reStructured Text, default roles don't seem to be supported in MyST.
+
+If you are coming from Markdown, you might wonder how to create inline code in reStructured Text. The answer is to enclose the string in double rather than single backticks. The implication for docstrings is that classes, functions etc. should be enclosed in single backticks, whereas parameter names should be enclosed in double backticks.
+
+You may prepend an artifact with a tilde to show only the last part of a fully qualified name. For example, `~my_package.MyClass` will be displayed as `MyClass` rather than `my_package.MyClass`.
+
+### Referencing code from other projects
 
 Thanks to [intersphinx](https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html), which is enabled by this template, you can reference code in other projects in the same way as you in your own project. So for example, Python's `list` class can be referenced in reStructured text with
 
