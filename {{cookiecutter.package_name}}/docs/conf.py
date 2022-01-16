@@ -25,9 +25,9 @@ html_sidebars = {
 }
 numpydoc_validation_checks = {"all"}
 intersphinx_mapping = {
-    'python': ('http://docs.python.org/', None),
+    'python': ('https://docs.python.org/3/', None),
     'numpy': ('https://numpy.org/doc/stable/', None),
-    'scipy': ('http://docs.scipy.org/doc/scipy/reference/', None),
-    'matplotlib': ('http://matplotlib.org/', None),
-    'astropy': ('http://docs.astropy.org/en/stable/', None)
+    'scipy': ('https://docs.scipy.org/doc/scipy/reference/', None),
+    'matplotlib': ('https://matplotlib.org/', None),
+    'astropy': ('https://docs.astropy.org/en/stable/', None)
 }
