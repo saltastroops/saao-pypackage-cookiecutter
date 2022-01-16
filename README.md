@@ -122,21 +122,7 @@ By default, the [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/
 
 ### Docstrings
 
-The template is adding [numpydoc](https://numpydoc.readthedocs.io/en/latest/) as a Sphinx extension. This implies that Python docstrings should be formatted according to the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). You might also want to have a look at the [AstroPy style guide](https://docs.astropy.org/en/latest/development/style-guide.html#astropy-style-guide).
-
-All numpydoc warnings for validation during a Sphinx build are enabled by default. If you want to be less restrictive, you may change the value of the `numpydoc_validation_checks` parameter in the `conf.py` file. For example, if you don't want to enforce types for parameters (but want to keep all other checks), you could use:
-
-```shell
-numpydoc_validation_checks = {"all", "PR04"}
-```
-
-As another example, if you only care about checking that there *are* docstrings and that their sections are in the correct order, you could use:
-
-```shell
-numpydoc_validation_checks = {"GL08", "GL07"}
-```
-
-See the [numpydoc validation page](https://numpydoc.readthedocs.io/en/latest/validation.html) for more details, including a list odf all the built-in validation checks.
+The template is adding [Napoleon](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html) as a Sphinx extension. Python docstrings should be formatted according to the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). You might also want to have a look at the [AstroPy style guide](https://docs.astropy.org/en/latest/development/style-guide.html#astropy-style-guide).
 
 Due to the way autodoc is handling code, you have to use reStructured Text in docstrings; MyST markdown will not work.
 

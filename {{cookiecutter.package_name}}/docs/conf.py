@@ -8,9 +8,9 @@ author = '{{ cookiecutter.author }}'
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
-    "myst_parser",
-    "numpydoc"
+    "myst_parser"
 ]
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -23,7 +23,6 @@ html_theme = "sphinx_book_theme"
 html_sidebars = {
     "**": ["sbt-sidebar-nav.html", "sbt-sidebar-footer.html"]
 }
-numpydoc_validation_checks = {"all"}
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'numpy': ('https://numpy.org/doc/stable/', None),
