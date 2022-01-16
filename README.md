@@ -64,10 +64,10 @@ The template defines several tox environments.
 Environment | Executed command | Default arguments | Description
 --- | --- | --- | ---
 testenv | `pytest` | Run unit tests. |
-format | `black` | Check for formatting issues | `--check --diff src test`
-lint | `flake8` | Check for linting issues | `src test`
-imports | `isort` | Check for incorrectly sorted import statements | `--check --diff src test`
-typecheck | `mypy` | Check for type errors | `src test`
+format | `black` | Check for formatting issues | `--check --diff src tests`
+lint | `flake8` | Check for linting issues | `src tests`
+imports | `isort` | Check for incorrectly sorted import statements | `--check --diff src tests`
+typecheck | `mypy` | Check for type errors | `src tests`
 docs | `sphinx-build` | Check building the documentation | `-W -b html -d {envtmpdir}/doctrees docs {envtmpdir}/html`
 
 If called without arguments, tox will run the testenv environment for all the python versions. To run it for a particular version, you can specify that version with the `-e` option. For example:
@@ -237,19 +237,19 @@ pytest
 For formatting the code run:
 
 ```shell
-black src test
+black src tests
 ```
 
 For sorting import statements run:
 
 ```shell
-isort src test
+isort src tests
 ```
 
 For linting run:
 
 ```shell
-flake8 src test
+flake8 src tests
 ```
 
 For building the documentation run:
