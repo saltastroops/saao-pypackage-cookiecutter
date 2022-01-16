@@ -120,6 +120,8 @@ The `hidden` property ensures that the content tree is not displayed on the inde
 
 By default, the [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/latest/) is used for the documentation. If you swap this for another theme, you should remove the theme package dependency (`sphinx-book-theme`) from the Sphinx configuration file (`docs/conf.py`), from the docs tox environment in `setup.cfg` and from the dev requirements file (`requirements-dev.txt`). You also have to remove or replace the `sidebar_html` configuration in the Sphinx configuration file, as required by the new theme.
 
+The built documentation should be located in the folder `docs/_build`. If you want to put it elsewhere, you should add the folder to the `.gitignore` file.
+
 ### Docstrings
 
 The template is adding [Napoleon](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html) as a Sphinx extension. Python docstrings should be formatted according to the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). You might also want to have a look at the [AstroPy style guide](https://docs.astropy.org/en/latest/development/style-guide.html#astropy-style-guide).
