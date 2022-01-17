@@ -67,8 +67,10 @@ testenv | `pytest` | Run unit tests. |
 format | `black` | Check for formatting issues | `--check --diff src tests`
 lint | `flake8` | Check for linting issues | `src tests`
 imports | `isort` | Check for incorrectly sorted import statements | `--check --diff src tests`
-typecheck | `mypy` | Check for type errors | `src tests`
+typecheck | `mypy` | Check for type errors | `src`
 docs | `sphinx-build` | Check building the documentation | `-W -b html -d {envtmpdir}/doctrees docs {envtmpdir}/html`
+
+Note that `mypy` by default is called only for the `src` folder. Adding type hints to pytest unit tests tends to be more pain than gain.
 
 If called without arguments, tox will run the testenv environment for all the python versions. To run it for a particular version, you can specify that version with the `-e` option. For example:
 
