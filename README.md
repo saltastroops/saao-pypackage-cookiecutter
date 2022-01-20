@@ -61,7 +61,7 @@ Once you have added a file to the `docs/_static` folder (which is for static doc
 
 The template defines several tox environments.
 
-Environment | Executed command | Default arguments | Description
+Environment | Executed command | Description | Default arguments
 --- | --- | --- | ---
 testenv | `pytest` | Run unit tests. |
 format | `black` | Check for formatting issues | `--check --diff src tests`
