@@ -1,11 +1,12 @@
 black
 flake8
+flake8-docstrings
+flake8-print
 isort
 mypy
 myst-parser
 numpydoc
 pytest
-pytest-cov
 sphinx
 sphinx-autodoc-typehints
 sphinx-book-theme

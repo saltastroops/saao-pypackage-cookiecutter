@@ -63,7 +63,7 @@ The template defines several tox environments.
 
 Environment | Executed command | Description | Default arguments
 --- | --- | --- | ---
-testenv | `pytest` | Run unit tests. |
+testenv | `pytest` | Run unit tests. | `--cov --strict-markers`
 format | `black` | Check for formatting issues | `--check --diff src tests`
 lint | `flake8` | Check for linting issues | `src tests`
 imports | `isort` | Check for incorrectly sorted import statements | `--check --diff src tests`
@@ -222,6 +222,19 @@ References to code in your project do not require a qualifier.
 
 You may find out more about intersphinx from [Brian Skinn's PyOhio's 2019 presentation](https://youtu.be/CfInPYkbTZE).
 
+## Linting
+
+Flake8 is used with following extensions for linting.
+
+Flake8 extension | Description
+--- | ---
+[flake8-docstrings](https://github.com/PyCQA/flake8-docstrings) | Check docstrings with [pydocstyle](https://github.com/pycqa/pydocstyle).
+[flake8-print](https://github.com/jbkahn/flake8-print) | Check that there are no `print` statements.
+
+The [numpydoc docstring standard](https://github.com/numpy/numpydoc) is assumed when checking docstrings. This can be changed with the `docstring-convention` setting in the flake8 configuration.
+
+See the flake8 configuration for ignored rules etc.
+
 ## Development
 
 For testing outside tox and for building the documentation you need various Python packages, which can be installed from the `requirements-dev.txt` file:
@@ -235,6 +248,8 @@ For unit tests run:
 ```shell
 pytest
 ```
+
+The project setup includes coverage for unit tests run with `tox`. This is not the case when `pytest` is run straight from the command line, as test coverage interferes with debugger breakpoints, causing code execution not to be paused at them. Use the `--cov`flag if you need coverage tio be included.
 
 For formatting the code run:
 
