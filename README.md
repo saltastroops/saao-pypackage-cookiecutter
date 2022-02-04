@@ -102,6 +102,10 @@ tox -p -e p38,typecheck
 
 This reduces the amount of execution time, but also the amount of output you get from tox.
 
+## Versioning
+
+The version number of the package is set as `__version__` in the package's `__init__.py` file.
+
 ## Documentation
 
 The template creates a `docs` folder for the package documentation. This contains a [sphinx](https://www.sphinx-doc.org/en/master/) configuration file (`conf.py`) and an index file (`index.md`).
