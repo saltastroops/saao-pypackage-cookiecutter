@@ -110,7 +110,14 @@ The version number of the package is set as `__version__` in the package's `__in
 
 The template creates a `docs` folder for the package documentation. This contains a [sphinx](https://www.sphinx-doc.org/en/master/) configuration file (`conf.py`) and an index file (`index.md`).
 
-In order to add pages to the documentation, you need to add their Markdown or reStructured Text file to the treetoc directive in `index.md`. For example, if you have an additional API page in a file `api.md`, the treetoc directive might look as follows. Note that the index page with the toctree directive must not be included in the toctree directive.
+In order to add pages to the documentation, you need to add their files to the toctree directive in `index.md`. 
+You can use three different kinds of file:
+
+1. Markdown files using the [Markedly Structured Text (MyST)](https://myst-parser.readthedocs.io/en/latest/) flavor.
+2. Jupyter notebooks. (This is made possible by the Myst-NB Sphinx extension.)
+3. ReStructured Text files.
+
+For example, if you have an API page in a file `api.md` and a Jupyter norebook `usage.ipynb`, the treetoc directive might look as follows. Note that the index page with the toctree directive must not be included in the toctree directive.
 
     ```{toctree}
     ---
@@ -120,6 +127,7 @@ In order to add pages to the documentation, you need to add their Markdown or re
     ---
 
     api
+    usage
     ```
 
 The `hidden` property ensures that the content tree is not displayed on the index page. You still need the directive, though, so that sphinx knows how to populate the content tree in the sidebar.

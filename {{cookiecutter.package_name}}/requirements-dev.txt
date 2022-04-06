@@ -4,7 +4,7 @@ flake8-docstrings
 flake8-print
 isort
 mypy
-myst-parser
+myst-nb
 numpydoc
 pytest
 sphinx
