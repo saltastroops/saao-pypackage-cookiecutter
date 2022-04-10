@@ -62,7 +62,11 @@ twine upload -r testpypi dist/*
 You can then install {{cookiecutter.package_name}} from Test PyPI with
 
 ```shell
-python -m pip install --index-url https://test.pypi.org/simple/ {{cookiecutter.package_name}}
+python -m pip install --extra-index-url https://test.pypi.org/simple/ {{cookiecutter.package_name}}
+```
+
+```{warning}
+TestPyPI lets you copy a command for installing the package. However, this uses `--index-url` instead of `--extra-index-url` and gives an error because setuptools cannot be found on TestPyPI.
 ```
 
 If all looks good, you can publish your package:
