@@ -8,5 +8,6 @@ myst-nb
 numpydoc
 pytest
 sphinx
+sphinx-autobuild
 sphinx-autodoc-typehints
 sphinx-book-theme

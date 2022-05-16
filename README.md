@@ -136,6 +136,18 @@ By default, the [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/
 
 The built documentation should be located in the folder `docs/_build`. If you want to put it elsewhere, you should add the folder to the `.gitignore` file.
 
+To build the documentation, you can run:
+
+```shell
+sphinx-build docs docs/_build
+```
+
+However, while you are busy writing the documentation, it might be easier to use `sphinx-autobuild``, which automatically re-runs Sphinx when a documentation file changes:
+
+```shell
+sphinx-autobuild docs docs/_build
+```
+
 ### Docstrings
 
 The template is adding [Napoleon](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html) as a Sphinx extension. Python docstrings should be formatted according to the [numpydoc style guide](https://numpydoc.readthedocs.io/en/latest/format.html). You might also want to have a look at the [AstroPy style guide](https://docs.astropy.org/en/latest/development/style-guide.html#astropy-style-guide).
