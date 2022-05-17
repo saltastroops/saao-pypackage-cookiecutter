@@ -29,7 +29,7 @@ If you have your own PyPI server, say `https://pypi.example.com`, create a file 
 index-servers =
 pypi
 testpypi
-saao
+example
 
 [pypi]
 repository = https://upload.pypi.org/legacy/
