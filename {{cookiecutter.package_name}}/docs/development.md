@@ -1,5 +1,31 @@
 # Development
 
+## Developing the package
+
+If you want to work on {{cookiecutter.package_name}}, you should first clone its repository.
+
+Afterwards, change into the cloned directory, create and activate a virtual environment, and install the required Python libraries.
+
+```shell
+cd /path/to/dir
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-dev.txt
+```
+
+For linting during development you can use the script `lint.sh`.
+
+```shell
+./lint.sh
+```
+
+To check the code before pushing it to the repository you can use the script `check.sh`.
+
+```shell
+./check.sh
+```
+
+
 ## Publishing the package
 
 ### Publishing manually

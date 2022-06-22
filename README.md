@@ -299,6 +299,19 @@ For building the documentation run:
 sphinx-build docs _build
 ```
 
+For convenience, the root directory contains a bash script for linting,
+
+```shell
+./lint.sh
+```
+
+and a bash script for running checks before pushing to the repository,
+
+```shell
+./check.sh
+```
+
+
 ## GitHub actions
 
 The template adds GitHub actions for Continuous Integration / Continuous Deployment.
